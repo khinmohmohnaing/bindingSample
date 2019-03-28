@@ -2,7 +2,7 @@ package com.example.newdatabinding.impl
 
 import com.example.newdatabinding.presenter.MainPresenter
 import com.example.newdatabinding.view.activity.MainView
-import com.example.newdatabinding.model.TemperatureData
+import com.example.newdatabinding.model.UserInfo
 import javax.inject.Inject
 
 class MainPresenterImpl @Inject constructor(
@@ -12,7 +12,7 @@ class MainPresenterImpl @Inject constructor(
         view.add(location)
     }
 
-    override fun showTempData(temperatureData: TemperatureData) {
+    override fun showTempData(temperatureData: UserInfo) {
         view.showData(temperatureData)
     }
 }

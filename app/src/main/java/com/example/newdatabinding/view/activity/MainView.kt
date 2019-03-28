@@ -1,8 +1,8 @@
 package com.example.newdatabinding.view.activity
 
-import com.example.newdatabinding.model.TemperatureData
+import com.example.newdatabinding.model.UserInfo
 
 interface MainView {
-    fun showData(temperatureData: TemperatureData)
+    fun showData(temperatureData: UserInfo)
     fun add(location:String)
 }

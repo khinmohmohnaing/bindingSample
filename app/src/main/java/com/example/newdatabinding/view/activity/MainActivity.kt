@@ -4,10 +4,11 @@ import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.example.newdatabinding.presenter.MainPresenter
 import com.example.newdatabinding.R
 import com.example.newdatabinding.databinding.ActivityMainBinding
-import com.example.newdatabinding.model.TemperatureData
+import com.example.newdatabinding.model.UserInfo
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -18,11 +19,12 @@ class MainActivity : AppCompatActivity(), MainView {
     lateinit var binding: com.example.newdatabinding.databinding.ActivityMainBinding
     override fun add(location: String) {
         Log.i("dkajkd",location)
-        txt.text=location
     }
 
-    override fun showData(temperatureData: TemperatureData) {
-
+    override fun showData(userinfo: UserInfo) {
+        userinfo.phoneNo=phoneNo.text.toString()
+        userinfo.password=password.text.toString()
+        Toast.makeText(this,userinfo.phoneNo+" "+userinfo.password,Toast.LENGTH_LONG).show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +34,8 @@ class MainActivity : AppCompatActivity(), MainView {
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this,
             R.layout.activity_main
         )
-        val temperatureData = TemperatureData("Hamburg", "10")
-        binding.setTemp(temperatureData)
+        val temperatureData = UserInfo("Hamburg", "10")
+        binding.setUserInfo(temperatureData)
         binding.setAppPresenter(mainPresenter)
 
     }
